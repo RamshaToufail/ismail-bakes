@@ -18,11 +18,11 @@ npm run db:push
 npm run build
 ```
 
-## Current delivery state
+## Ordering preview status
 
-Phase 1: Responsive branded frontend and primary storefront routes implemented.
-Phase 2: Prisma relational schema and environment template prepared; Neon credentials and connectivity are not configured, and schema has not been deployed.
-Phases 3–5: Product/cart/checkout persistence, admin authentication/dashboard, and live order workflow are not implemented. The storefront currently uses editorial catalogue data and clearly labels the request/approval requirement. Do not represent checkout, order submission, admin access, image upload, or payment as operational.
-Phase 6: Build verification in progress. Vercel deployment is not performed.
+- Product cart, localStorage persistence, PKR subtotal, checkout details, 48-hour Pakistan-time validation, and a review-only order preview are implemented.
+- Checkout exposes only the bakery-approved Rawalpindi service areas listed in `.env.example`. The list is configurable with `NEXT_PUBLIC_RAWALPINDI_SERVICE_AREAS` (comma-separated); the supplied approved list is the default.
+- This is frontend-only: no order is transmitted or saved, no online payment is taken, and the review screen clearly states it is not a submitted order. Delivery fees are not estimated or invented.
+- Neon/Prisma schema setup remains separate and is not used by this preview flow. Admin authentication and order management are not implemented.
 
 Vercel: import the repository, set `DATABASE_URL`, `DIRECT_URL`, and `AUTH_SECRET` in project environment settings, then configure migrations/deploy only after database setup and review.
