@@ -12,7 +12,10 @@ export const APPROVED_RAWALPINDI_AREAS = [
 
 /** Bakery-approved local list; an optional public env override supports later maintenance. */
 export function getServiceAreas(): string[] {
-  const source = process.env.NEXT_PUBLIC_RAWALPANDI_SERVICE_AREAS ?? APPROVED_RAWALPINDI_AREAS.join(',');
+  const source =
+    process.env.NEXT_PUBLIC_RAWALPINDI_SERVICE_AREAS ??
+    process.env.NEXT_PUBLIC_RAWALPANDI_SERVICE_AREAS ??
+    APPROVED_RAWALPINDI_AREAS.join(',');
   const unique = new Map<string, string>();
   for (const entry of source.split(',')) {
     const name = entry.trim().replace(/\s+/g, ' ');
