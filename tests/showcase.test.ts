@@ -1,9 +1,12 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
 import { products, photo, money } from '../src/lib/products';
 import { earliestDeliveryDate, hasRequiredNotice } from '../src/lib/checkout-rules';
 import { APPROVED_RAWALPINDI_AREAS, getServiceAreas, isApprovedServiceArea } from '../src/lib/service-areas';
 import { galleryItems, galleryPhoto } from '../src/lib/gallery';
+import { verifiedReviews } from '../src/lib/reviews';
 
 test('product catalog has valid structure and required fields', () => {
   assert.ok(products.length >= 4, 'Catalog should contain products');
@@ -28,6 +31,28 @@ test('gallery collection has valid structure and tags', () => {
     assert.ok(item.image, 'Gallery item should have an image reference');
     assert.ok(item.description, 'Gallery item should have a description');
   }
+});
+
+test('verified customer reviews have required fields and valid ratings', () => {
+  assert.ok(verifiedReviews.length >= 3, 'Should have verified customer reviews');
+  for (const r of verifiedReviews) {
+    assert.ok(r.id, 'Review must have an id');
+    assert.ok(r.quote, 'Review must have a quote');
+    assert.ok(r.author, 'Review must have an author');
+    assert.ok(r.location, 'Review must have a location in Rawalpindi');
+    assert.ok(r.occasion, 'Review must have an occasion');
+    assert.equal(r.rating, 5, 'Review must have 5-star rating');
+  }
+});
+
+test('commercial hosting assessment documentation exists and covers Cloudflare Pages and Netlify', () => {
+  const filePath = path.join(process.cwd(), 'HOSTING_ASSESSMENT.md');
+  assert.ok(fs.existsSync(filePath), 'HOSTING_ASSESSMENT.md must exist');
+  const content = fs.readFileSync(filePath, 'utf-8');
+  assert.ok(content.includes('Vercel Hobby Plan'), 'Assessment should cover Vercel Hobby restrictions');
+  assert.ok(content.includes('Cloudflare Pages'), 'Assessment should cover Cloudflare Pages');
+  assert.ok(content.includes('Netlify Starter'), 'Assessment should cover Netlify Starter');
+  assert.ok(content.includes('100% Free Commercial Use'), 'Assessment should specify free commercial use');
 });
 
 test('gallery photo helper generates valid unsplash URLs', () => {
