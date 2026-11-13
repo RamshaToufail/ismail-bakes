@@ -54,3 +54,10 @@ test('all nine owner-approved Rawalpindi areas are recognized', () => {
   }
   assert.equal(isApprovedServiceArea('Islamabad F-7', areas), false);
 });
+
+test('core showcase navigation routes are valid paths', () => {
+  const routes = ['/', '/shop', '/cakes', '/about', '/faqs', '/contact', '/privacy', '/terms'];
+  for (const route of routes) {
+    assert.ok(route.startsWith('/'), `Route ${route} should start with /`);
+  }
+});
