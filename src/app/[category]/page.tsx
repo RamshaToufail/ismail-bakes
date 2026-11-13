@@ -134,6 +134,11 @@ export default async function CategoryPage({
             >
               <Instagram size={15} /> Message on Instagram ↗
             </a>
+            {category === 'cakes' && (
+              <Link href="/custom-cakes" className="btn btn-outline">
+                Bespoke Cake Guide ↗
+              </Link>
+            )}
             <Link href="/contact" className="btn btn-outline">
               <MessageCircle size={15} /> Contact us ↗
             </Link>

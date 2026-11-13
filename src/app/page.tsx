@@ -269,8 +269,8 @@ export default function Home() {
             >
               <Instagram size={15} /> Discuss a custom cake on Instagram ↗
             </a>
-            <Link href="/cakes" className="btn btn-outline">
-              Learn about custom cakes ↗
+            <Link href="/custom-cakes" className="btn btn-outline">
+              Bespoke Cake Ordering Guide ↗
             </Link>
           </div>
         </div>
@@ -400,6 +400,9 @@ export default function Home() {
           >
             <Instagram size={15} /> Follow @ismail.bakes on Instagram ↗
           </a>
+          <Link href="/gallery" className="btn btn-outline">
+            Explore Artisanal Gallery ↗
+          </Link>
         </div>
       </section>
 

@@ -66,11 +66,14 @@ export default function Shop() {
             personally on every detail.
           </p>
           <div className="bespoke-actions">
+            <Link href="/custom-cakes" className="btn">
+              Bespoke Cake Guide ↗
+            </Link>
             <a
               href="https://www.instagram.com/ismail.bakes/"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn"
+              className="btn btn-outline"
             >
               <Instagram size={15} /> Message on Instagram ↗
             </a>

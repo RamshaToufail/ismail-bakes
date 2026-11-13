@@ -67,7 +67,8 @@ export function SiteHeader() {
           <nav className="desktop-nav" aria-label="Main navigation">
             <Link href="/">Home</Link>
             <Link href="/shop">Our Creations</Link>
-            <Link href="/cakes">Custom Cakes</Link>
+            <Link href="/custom-cakes">Custom Cakes</Link>
+            <Link href="/gallery">Gallery</Link>
             <Link href="/about">Our Story</Link>
             <Link href="/faqs">FAQs</Link>
             <Link href="/contact">Contact</Link>
@@ -151,8 +152,12 @@ export function SiteHeader() {
             <span>Our Creations</span>
             <ArrowUpRight size={16} />
           </Link>
-          <Link href="/cakes" onClick={closeMenu}>
+          <Link href="/custom-cakes" onClick={closeMenu}>
             <span>Custom Cakes</span>
+            <ArrowUpRight size={16} />
+          </Link>
+          <Link href="/gallery" onClick={closeMenu}>
+            <span>Artisanal Gallery</span>
             <ArrowUpRight size={16} />
           </Link>
           <Link href="/about" onClick={closeMenu}>
@@ -491,7 +496,8 @@ export function SiteFooter() {
         <div>
           <h4>EXPLORE</h4>
           <Link href="/shop">Our Creations</Link>
-          <Link href="/cakes">Custom Cakes</Link>
+          <Link href="/custom-cakes">Custom Cakes</Link>
+          <Link href="/gallery">Artisanal Gallery</Link>
           <Link href="/about">Our Story</Link>
           <Link href="/faqs">FAQs</Link>
         </div>

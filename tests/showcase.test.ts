@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { products, photo, money } from '../src/lib/products';
 import { earliestDeliveryDate, hasRequiredNotice } from '../src/lib/checkout-rules';
 import { APPROVED_RAWALPINDI_AREAS, getServiceAreas, isApprovedServiceArea } from '../src/lib/service-areas';
+import { galleryItems, galleryPhoto } from '../src/lib/gallery';
 
 test('product catalog has valid structure and required fields', () => {
   assert.ok(products.length >= 4, 'Catalog should contain products');
@@ -14,6 +15,24 @@ test('product catalog has valid structure and required fields', () => {
     assert.ok(product.image, 'Product should have an image reference');
     assert.ok(product.description, 'Product should have a description');
   }
+});
+
+test('gallery collection has valid structure and tags', () => {
+  assert.ok(galleryItems.length >= 6, 'Gallery should have multiple curated showcase items');
+  for (const item of galleryItems) {
+    assert.ok(item.id, 'Gallery item should have an id');
+    assert.ok(item.title, 'Gallery item should have a title');
+    assert.ok(item.category, 'Gallery item should have a category');
+    assert.ok(item.categoryLabel, 'Gallery item should have a category label');
+    assert.ok(item.occasion, 'Gallery item should specify an occasion');
+    assert.ok(item.image, 'Gallery item should have an image reference');
+    assert.ok(item.description, 'Gallery item should have a description');
+  }
+});
+
+test('gallery photo helper generates valid unsplash URLs', () => {
+  const url = galleryPhoto('sample-image-id', 800);
+  assert.equal(url, 'https://images.unsplash.com/sample-image-id?auto=format&fit=crop&w=800&q=85');
 });
 
 test('photo helper generates valid unsplash URLs', () => {
@@ -56,7 +75,18 @@ test('all nine owner-approved Rawalpindi areas are recognized', () => {
 });
 
 test('core showcase navigation routes are valid paths', () => {
-  const routes = ['/', '/shop', '/cakes', '/about', '/faqs', '/contact', '/privacy', '/terms'];
+  const routes = [
+    '/',
+    '/shop',
+    '/custom-cakes',
+    '/gallery',
+    '/cakes',
+    '/about',
+    '/faqs',
+    '/contact',
+    '/privacy',
+    '/terms',
+  ];
   for (const route of routes) {
     assert.ok(route.startsWith('/'), `Route ${route} should start with /`);
   }
