@@ -116,3 +116,39 @@ test('core showcase navigation routes are valid paths', () => {
     assert.ok(route.startsWith('/'), `Route ${route} should start with /`);
   }
 });
+
+test('sitemap generator includes static, category, and product routes', async () => {
+  const sitemapModule = await import('../src/app/sitemap');
+  const sitemap = sitemapModule.default();
+  assert.ok(Array.isArray(sitemap), 'Sitemap should return an array');
+  assert.ok(sitemap.length >= 17, 'Sitemap should contain all core URLs');
+
+  const urls = sitemap.map((entry) => entry.url);
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app'), 'Sitemap must contain home URL');
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app/shop'), 'Sitemap must contain shop URL');
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app/custom-cakes'), 'Sitemap must contain custom-cakes URL');
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app/gallery'), 'Sitemap must contain gallery URL');
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app/cakes'), 'Sitemap must contain category URL');
+  assert.ok(urls.includes('https://ismail-bakes.vercel.app/product/rose-cake'), 'Sitemap must contain product URL');
+});
+
+test('robots generator allows indexing and points to sitemap.xml', async () => {
+  const robotsModule = await import('../src/app/robots');
+  const robots = robotsModule.default();
+  assert.equal(robots.sitemap, 'https://ismail-bakes.vercel.app/sitemap.xml');
+  assert.ok(Array.isArray(robots.rules), 'Robots rules should be an array');
+  assert.equal(robots.rules[0]?.allow, '/');
+});
+
+test('launch checklist documentation exists and covers all phases', () => {
+  const filePath = path.join(process.cwd(), 'LAUNCH_CHECKLIST.md');
+  assert.ok(fs.existsSync(filePath), 'LAUNCH_CHECKLIST.md must exist');
+  const content = fs.readFileSync(filePath, 'utf-8');
+  assert.ok(content.includes('Phase 1'), 'Checklist must cover Phase 1');
+  assert.ok(content.includes('Phase 2'), 'Checklist must cover Phase 2');
+  assert.ok(content.includes('Phase 3'), 'Checklist must cover Phase 3');
+  assert.ok(content.includes('Phase 4'), 'Checklist must cover Phase 4');
+  assert.ok(content.includes('Phase 5'), 'Checklist must cover Phase 5');
+  assert.ok(content.includes('Phase 6'), 'Checklist must cover Phase 6');
+  assert.ok(content.includes('Phase 7'), 'Checklist must cover Phase 7');
+});
