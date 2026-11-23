@@ -8,7 +8,7 @@ export type CustomerReview = {
   rating: number;
 };
 
-export const verifiedReviews: CustomerReview[] = [
+export const customerReviews: CustomerReview[] = [
   {
     id: 'review-1',
     quote:

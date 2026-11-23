@@ -6,7 +6,7 @@
     "dev": "next dev --hostname 0.0.0.0",
     "build": "next build",
     "start": "next start --hostname 0.0.0.0",
-    "lint": "next lint",
+    "lint": "next lint --no-cache",
     "db:generate": "dotenv -e .env.local -- prisma generate",
     "db:push": "dotenv -e .env.local -- prisma db push",
     "db:seed": "dotenv -e .env.local -- tsx prisma/seed.ts",
@@ -22,17 +22,22 @@
     "lucide-react": "^0.468.0",
     "next": "^15.2.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "zod": "^3.24.2"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.14",
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^15.5.29",
     "prisma": "^6.5.0",
     "tailwindcss": "^4.0.14",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2"
+  },
+  "overrides": {
+    "postcss": "8.5.32",
+    "effect": "3.22.5"
   }
 }

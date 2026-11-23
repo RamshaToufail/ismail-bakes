@@ -1,89 +1,26 @@
-# Ismail Bakes — Commercial Hosting Assessment & Migration Guide
+# Hosting considerations for Ismail Bakes
 
-## Executive Summary
+This document is a technical planning note, not legal, policy, or pricing advice. Hosting-provider terms, plan limits, pricing, and Next.js support change over time. Verify current official documentation and the bakery's intended use before choosing or changing a production host.
 
-Ismail Bakes is a boutique bakery showcase and pre-order portfolio operating in Rawalpindi, Pakistan. Because this website functions as a digital storefront and commercial brand portfolio for a real business, hosting policy compliance is critical.
+## Application requirements
 
-This assessment evaluates the current hosting platform (**Vercel Hobby Plan**) against commercial Terms of Service, and provides concrete, zero-cost, commercial-compliant alternatives: **Cloudflare Pages** and **Netlify Starter**.
+- Next.js App Router with static generation for the current showcase routes.
+- Image optimization and support for the project's configured Next.js features.
+- HTTPS, custom-domain support if a bakery domain is selected, and deploy previews.
+- Environment variables managed in the hosting provider's secret settings, never committed to Git.
 
----
+## Provider evaluation checklist
 
-## 1. Vercel Hobby Plan vs. Commercial Use
+Compare providers against the requirements above and verify:
 
-### The Restriction
-Under **Vercel's Terms of Service (Fair Use Guidelines)**:
-- The **Hobby (Free) Plan** is explicitly restricted to **personal, non-commercial projects**.
-- Websites that promote, showcase, or generate leads for a commercial business (such as a bakery accepting customer orders, client inquiries, or brand commissions) are classified as commercial activities.
-- Hosting a commercial portfolio on Vercel Hobby risks automated domain suspension or forced migration to **Vercel Pro ($20/month per member)**.
+1. Current commercial-use terms and applicable plan restrictions.
+2. Support for this repository's Next.js version, App Router behavior, and build output.
+3. Image optimization/runtime compatibility and any required adapters.
+4. Build, bandwidth, function, and custom-domain limits and current pricing.
+5. How secrets are scoped across production, preview, and development environments.
 
-### Recommendation for Ismail Bakes
-To ensure 100% policy compliance with **zero ongoing hosting costs**, Ismail Bakes should deploy its production showcase to **Cloudflare Pages** or **Netlify Starter**. Both platforms explicitly allow commercial use on their generous free tiers.
+Do not assume a free tier permits commercial use, that a feature is unlimited, or that a static-export recipe supports every server feature. Confirm each point in the provider's current official documentation.
 
----
+## Current project note
 
-## 2. Platform Comparison Matrix
-
-| Feature / Criteria | Vercel Hobby | Cloudflare Pages (Recommended) | Netlify Starter | GitHub Pages |
-| :--- | :--- | :--- | :--- | :--- |
-| **Commercial Use on Free Tier** | ❌ **No** (Personal/Hobby only) | ✅ **Yes** (100% allowed) | ✅ **Yes** (Commercial allowed) | ⚠️ Acceptable for static portfolios, but subject to GitHub commercial limits |
-| **Monthly Hosting Cost** | $0 (Hobby) / $20/mo (Pro) | **$0 / month forever** | **$0 / month forever** | $0 / month |
-| **Bandwidth Limits** | 100 GB / month | **Unlimited bandwidth** | 100 GB / month | 100 GB / month |
-| **Custom Domain & SSL** | Included | **Included (Automatic SSL + DDoS)** | Included (Automatic Let's Encrypt) | Included |
-| **Global Edge Network** | Fast | **330+ Global Data Centers** | Global CDN | Fastly CDN |
-| **GitHub CI/CD Deployments** | Automatic on push | **Automatic on push** | **Automatic on push** | GitHub Actions |
-| **Static Next.js Compatibility** | Native | **Native (`@cloudflare/next-on-pages` or static export)** | **Native (`@netlify/plugin-nextjs`)** | Static export only |
-
----
-
-## 3. Recommended Choice: Cloudflare Pages
-
-### Why Cloudflare Pages is Ideal for Ismail Bakes:
-1. **100% Free Commercial Use**: Zero risk of policy violations or unexpected charges.
-2. **Unlimited Bandwidth**: No monthly overage fees even during seasonal cake order spikes (Eid, wedding season, Valentine's, New Year).
-3. **World-Class Performance**: Fastest CDN response times in Pakistan via Cloudflare's regional edge nodes (Karachi, Lahore, Islamabad).
-4. **Built-In Enterprise Security**: Free automated SSL, DDoS mitigation, and HTTP/3 support.
-
----
-
-## 4. Step-by-Step Deployment Guide
-
-### Option A: Cloudflare Pages Deployment (Recommended)
-
-1. **Connect GitHub Repository**:
-   - Log in to your free [Cloudflare Dashboard](https://dash.cloudflare.com/).
-   - Navigate to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-   - Select the `RamshaToufail/ismail-bakes` repository.
-
-2. **Configure Build Settings**:
-   - **Framework preset**: `Next.js (Static HTML Export)` or `Next.js`.
-   - **Build command**: `npm run build`
-   - **Build output directory**: `.next` (or `out` if using `output: 'export'`)
-   - **Node.js version environment variable**: Set `NODE_VERSION` to `20`.
-
-3. **Custom Domain**:
-   - In the Cloudflare Pages project settings, click **Custom domains**.
-   - Add your bakery domain (e.g., `ismailbakes.com` or `ismail-bakes.vercel.app` redirection).
-   - Cloudflare provisions a free, auto-renewing SSL certificate within minutes.
-
----
-
-### Option B: Netlify Starter Deployment
-
-1. **Connect GitHub Repository**:
-   - Log in to [Netlify](https://app.netlify.com/).
-   - Click **Add new site** > **Import an existing project** > **GitHub**.
-   - Select `RamshaToufail/ismail-bakes`.
-
-2. **Configure Build Settings**:
-   - Netlify automatically detects Next.js App Router and installs the official `@netlify/plugin-nextjs`.
-   - **Build command**: `npm run build`
-   - **Publish directory**: `.next`
-
-3. **Deploy**:
-   - Click **Deploy Site**. Every push to `main` will automatically build and deploy within 60 seconds.
-
----
-
-## 5. Architectural Integrity Note
-
-Ismail Bakes' current Next.js 15 showcase architecture produces **100% pre-rendered static HTML/React bundles (SSG)** for all 21 routes with zero server-side database bottlenecks at runtime. This makes the entire application instantaneously deployable to any static edge network without code modification.
+The repository contains Vercel deployment configuration. This document does not recommend changing providers or project settings; any migration should be separately approved and tested before production use.
