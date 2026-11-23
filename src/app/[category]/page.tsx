@@ -127,7 +127,7 @@ export default async function CategoryPage({
           <p>{meta.consultationTip}</p>
           <div className="consultation-actions">
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn"

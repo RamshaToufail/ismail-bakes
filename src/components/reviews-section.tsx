@@ -68,7 +68,7 @@ export function ReviewsSection({
         <div className="reviews-cta">
           <span>Celebrated with us recently?</span>
           <a
-            href="https://www.instagram.com/ismail.bakes/"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="text-link"

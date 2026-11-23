@@ -129,7 +129,7 @@ export default function CustomCakesPage() {
             </p>
             <div className="hero-ctas">
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn"
@@ -332,7 +332,7 @@ export default function CustomCakesPage() {
 
               <div className="consultation-cta-group">
                 <a
-                  href="https://www.instagram.com/ismail.bakes/"
+                  href="/contact"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn"

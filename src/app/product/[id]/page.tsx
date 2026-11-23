@@ -133,7 +133,7 @@ export default async function ProductPage({
             </div>
             <div className="enquiry-actions">
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn"

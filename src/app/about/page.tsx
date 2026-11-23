@@ -81,7 +81,7 @@ export default function AboutPage() {
                 Explore our creations <ArrowRight size={15} />
               </Link>
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn btn-outline"
@@ -224,7 +224,7 @@ export default function AboutPage() {
               Bespoke Cake Guide ↗
             </Link>
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"

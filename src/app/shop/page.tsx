@@ -70,7 +70,7 @@ export default function Shop() {
               Bespoke Cake Guide ↗
             </Link>
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"

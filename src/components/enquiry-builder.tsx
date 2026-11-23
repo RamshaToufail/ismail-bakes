@@ -166,7 +166,7 @@ Could you please confirm your date availability and pricing? Thank you!`;
               )}
             </button>
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-outline"
