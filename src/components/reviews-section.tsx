@@ -1,10 +1,10 @@
 import { ArrowUpRight, CheckCircle2, Instagram, MapPin, Sparkles, Star } from 'lucide-react';
-import { CustomerReview, verifiedReviews } from '@/lib/reviews';
+import { CustomerReview, customerReviews } from '@/lib/reviews';
 
 export function ReviewsSection({
   title = 'Words From Sweet Celebrations',
   subtitle = 'Every bake is crafted to be savoured and remembered. Here is what our customers share from their special days.',
-  reviews = verifiedReviews,
+  reviews = customerReviews,
 }: {
   title?: string;
   subtitle?: string;

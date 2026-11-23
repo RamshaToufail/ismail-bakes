@@ -8,3 +8,17 @@
 *.log
 .DS_Store
 .neon
+/.vercel
+
+# Local package-manager credentials and private configuration
+/.npmrc
+.npmrc.local
+/.netrc
+
+# Private keys and service-account credentials
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+service-account*.json

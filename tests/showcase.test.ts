@@ -6,7 +6,7 @@ import { products, photo, money } from '../src/lib/products';
 import { earliestDeliveryDate, hasRequiredNotice } from '../src/lib/checkout-rules';
 import { APPROVED_RAWALPINDI_AREAS, getServiceAreas, isApprovedServiceArea } from '../src/lib/service-areas';
 import { galleryItems, galleryPhoto } from '../src/lib/gallery';
-import { verifiedReviews } from '../src/lib/reviews';
+import { customerReviews } from '../src/lib/reviews';
 
 test('product catalog has valid structure and required fields', () => {
   assert.ok(products.length >= 4, 'Catalog should contain products');
@@ -33,9 +33,9 @@ test('gallery collection has valid structure and tags', () => {
   }
 });
 
-test('verified customer reviews have required fields and valid ratings', () => {
-  assert.ok(verifiedReviews.length >= 3, 'Should have verified customer reviews');
-  for (const r of verifiedReviews) {
+test('customer review entries have display fields and valid ratings (consent is not verified by this test)', () => {
+  assert.ok(customerReviews.length >= 3, 'Review content entries should be present');
+  for (const r of customerReviews) {
     assert.ok(r.id, 'Review must have an id');
     assert.ok(r.quote, 'Review must have a quote');
     assert.ok(r.author, 'Review must have an author');
@@ -45,14 +45,13 @@ test('verified customer reviews have required fields and valid ratings', () => {
   }
 });
 
-test('commercial hosting assessment documentation exists and covers Cloudflare Pages and Netlify', () => {
+test('hosting considerations document warns that provider terms and pricing must be verified', () => {
   const filePath = path.join(process.cwd(), 'HOSTING_ASSESSMENT.md');
   assert.ok(fs.existsSync(filePath), 'HOSTING_ASSESSMENT.md must exist');
   const content = fs.readFileSync(filePath, 'utf-8');
-  assert.ok(content.includes('Vercel Hobby Plan'), 'Assessment should cover Vercel Hobby restrictions');
-  assert.ok(content.includes('Cloudflare Pages'), 'Assessment should cover Cloudflare Pages');
-  assert.ok(content.includes('Netlify Starter'), 'Assessment should cover Netlify Starter');
-  assert.ok(content.includes('100% Free Commercial Use'), 'Assessment should specify free commercial use');
+  assert.ok(content.includes('not legal, policy, or pricing advice'));
+  assert.ok(content.includes('Verify current official documentation'));
+  assert.ok(content.includes('Environment variables managed in the hosting provider'));
 });
 
 test('gallery photo helper generates valid unsplash URLs', () => {
@@ -140,15 +139,11 @@ test('robots generator allows indexing and points to sitemap.xml', async () => {
   assert.equal(robots.rules[0]?.allow, '/');
 });
 
-test('launch checklist documentation exists and covers all phases', () => {
+test('launch checklist discloses order-persistence limits and testimonial consent review', () => {
   const filePath = path.join(process.cwd(), 'LAUNCH_CHECKLIST.md');
   assert.ok(fs.existsSync(filePath), 'LAUNCH_CHECKLIST.md must exist');
   const content = fs.readFileSync(filePath, 'utf-8');
-  assert.ok(content.includes('Phase 1'), 'Checklist must cover Phase 1');
-  assert.ok(content.includes('Phase 2'), 'Checklist must cover Phase 2');
-  assert.ok(content.includes('Phase 3'), 'Checklist must cover Phase 3');
-  assert.ok(content.includes('Phase 4'), 'Checklist must cover Phase 4');
-  assert.ok(content.includes('Phase 5'), 'Checklist must cover Phase 5');
-  assert.ok(content.includes('Phase 6'), 'Checklist must cover Phase 6');
-  assert.ok(content.includes('Phase 7'), 'Checklist must cover Phase 7');
+  assert.ok(content.includes('does not persist orders or process payments'));
+  assert.ok(content.includes('does not contain records proving their authenticity or customer consent'));
+  assert.ok(content.includes('Store credentials in the hosting provider'));
 });
