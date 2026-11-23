@@ -46,7 +46,7 @@ export default function TermsPage() {
               All customer pre-orders and bespoke celebration cake enquiries are conducted
               externally through our official Instagram profile (
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
               >

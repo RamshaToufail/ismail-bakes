@@ -61,7 +61,7 @@ export default function ContactPage() {
               availability, design recommendations, and custom pricing.
             </p>
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn"

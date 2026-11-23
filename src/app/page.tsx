@@ -262,7 +262,7 @@ export default function Home() {
 
           <div className="bespoke-actions">
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn"
@@ -356,7 +356,7 @@ export default function Home() {
             </h2>
           </div>
           <a
-            href="https://www.instagram.com/ismail.bakes/"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="text-link"
@@ -373,7 +373,7 @@ export default function Home() {
           {galleryShots.map((shot) => (
             <a
               key={shot.id}
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="instagram-item"
@@ -393,7 +393,7 @@ export default function Home() {
 
         <div className="instagram-cta">
           <a
-            href="https://www.instagram.com/ismail.bakes/"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="btn"
@@ -480,7 +480,7 @@ export default function Home() {
           </p>
           <div className="contact-actions">
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="btn"

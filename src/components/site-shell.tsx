@@ -77,7 +77,7 @@ export function SiteHeader() {
           {/* Header Action & Mobile Toggle */}
           <div className="nav-actions">
             <a
-              href="https://www.instagram.com/ismail.bakes/"
+              href="/contact"
               target="_blank"
               rel="noopener noreferrer"
               className="nav-social"
@@ -180,7 +180,7 @@ export function SiteHeader() {
             <p>Ready to plan your celebration? Connect with us directly.</p>
             <div className="drawer-actions">
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn drawer-btn"
@@ -504,7 +504,7 @@ export function SiteFooter() {
         <div>
           <h4>GET IN TOUCH</h4>
           <a
-            href="https://www.instagram.com/ismail.bakes/"
+            href="/contact"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-social-link"

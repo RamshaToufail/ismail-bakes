@@ -228,7 +228,7 @@ export function GalleryLightbox({ items }: { items: GalleryItem[] }) {
                   </p>
                   <div className="dialog-actions">
                     <a
-                      href="https://www.instagram.com/ismail.bakes/"
+                      href="/contact"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn"

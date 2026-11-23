@@ -37,7 +37,7 @@ export default function PrivacyPage() {
               When you enquire about a pre-order or consult with us through our official Instagram
               profile (
               <a
-                href="https://www.instagram.com/ismail.bakes/"
+                href="/contact"
                 target="_blank"
                 rel="noopener noreferrer"
               >

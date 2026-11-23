@@ -81,7 +81,6 @@ const jsonLd = {
   url: "https://ismail-bakes.vercel.app",
   priceRange: "PKR 1200 - PKR 6500",
   servesCuisine: "Artisanal Cakes & Patisserie",
-  sameAs: ["https://www.instagram.com/ismail.bakes/"],
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",
